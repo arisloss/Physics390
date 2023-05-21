@@ -50,8 +50,7 @@ int main()
     gettimeofday(&t_start,NULL);
     MeanVarianceResults results = 
       integrate_1D_MeanVariance_Gaussian( gaussian_params[0], gaussian_params[1],
-    range_i, range_f, NEVENTS,
-    prng );
+    range_i, range_f, NEVENTS, prng );
 
     gettimeofday(&t_stop,NULL);
     deltaT.push_back(1e6*(t_stop.tv_sec-t_start.tv_sec) + (t_stop.tv_usec-t_start.tv_usec));
