@@ -32,7 +32,6 @@ int main()
   const double sigma = 1.;
   double gaussian_params[] = {mean, sigma};
 
-
   for ( int i=0; i<NTRIALS; i++ ) {
 
 #ifdef GCC
@@ -47,32 +46,20 @@ int main()
       prng.write(rnum);
 #endif
     }
-
   
-    //#ifdef GCC
     gettimeofday(&t_start,NULL);
-    //#endif
-    MeanVarianceResults results = integrate_1D_MeanVariance_Gaussian( gaussian_params[0], gaussian_params[1],
-								      range_i, range_f, NEVENTS,
-								      prng );
-    //#ifdef GCC
+    MeanVarianceResults results = 
+      integrate_1D_MeanVariance_Gaussian( gaussian_params[0], gaussian_params[1],
+    range_i, range_f, NEVENTS,
+    prng );
+
     gettimeofday(&t_stop,NULL);
     deltaT.push_back(1e6*(t_stop.tv_sec-t_start.tv_sec) + (t_stop.tv_usec-t_start.tv_usec));
-    // deltaTs.push_back(t_stop.tv_sec-t_start.tv_sec);
-    // deltaTus.push_back(t_stop.tv_usec-t_start.tv_usec);
     int_val.push_back(results.integral);
     int_err.push_back(results.error);
-    // if( !(i%1000) ) std::cout << "i: " << i << "\tintv: " << results.integral 
-    // 			      << "\tinterr: " << results.error << std::endl;
-    //#endif
   }
 
-  //#ifdef GCC
   for( int i=0; i<NTRIALS; i++ )
     printf("i: %d integral: %lf error: %lf deltaT: %u\n",// deltaTs: %u deltaTus: %u\n", 
 	   i, int_val[i], int_err[i], deltaT[i]);//, deltaTs[i], deltaTus[i]);
-// #else 
-//     printf("i: %d integral: %lf error: %lf deltaT: %u\n",// deltaTs: %u deltaTus: %u\n", 
-// 	   i, int_val[i], int_err[i], deltaT[i]);//, deltaTs[i], deltaTus[i]);
-// #endif
 }
