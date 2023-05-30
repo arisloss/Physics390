@@ -21,7 +21,7 @@ void plotResults() {
 
 
   TTree * t = new TTree("t","t");
-  t->ReadFile("log.dat","l0/C:index/I:l1/C:intV/F:l2/C:intE/F:l3/C:dt/I");
+  t->ReadFile("log_10k.dat","l0/C:index/I:l1/C:intV/F:l2/C:intE/F:l3/C:dt/I");
   //t->ReadFile("log_1k.dat","l0/C:index/I:l1/C:intV/F:l2/C:intE/F:l3/C:dt/I");
   t->Print();
 
