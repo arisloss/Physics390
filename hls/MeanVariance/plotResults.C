@@ -2,16 +2,27 @@ void plotResults() {
 
   const float max_deltaT = 2000.;//15000.;
   const float bins_deltaT = 100.;
+  const float bins_intV = 200.;
+  const float bins_intE = 100.;
+
+  // 10k
   const float max_intV = 1.1;
   const float min_intV = 0.90;
-  const float bins_intV = 200.;
   const float max_intE = 0.014;
   const float min_intE = 0.013;
-  const float bins_intE = 100.;
+
+  /*
+  // 1k
+  const float max_intV = 1.2;
+  const float min_intV = 0.8;
+  const float max_intE = 0.048;
+  const float min_intE = 0.038;
+  */
 
 
   TTree * t = new TTree("t","t");
   t->ReadFile("log.dat","l0/C:index/I:l1/C:intV/F:l2/C:intE/F:l3/C:dt/I");
+  //t->ReadFile("log_1k.dat","l0/C:index/I:l1/C:intV/F:l2/C:intE/F:l3/C:dt/I");
   t->Print();
 
   TCanvas * c0 = new TCanvas("c0","c0", 0, 0, 600, 500);

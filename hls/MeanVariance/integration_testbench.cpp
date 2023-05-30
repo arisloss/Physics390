@@ -13,6 +13,7 @@
 #endif
 
 #define NEVENTS 10000
+//#define NEVENTS 1000
 
 int main()
 {
