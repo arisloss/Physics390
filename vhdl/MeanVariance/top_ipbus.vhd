@@ -362,7 +362,7 @@ begin
   );
 
 
-  integral : entity work.integrate_1D_MeanVariance_Gaussian_1
+  integral : entity work.integrate_1D_MeanVariance_Gaussian_0
     port map (
       ap_clk        => clk200,
       ap_rst        => integral_reset,
